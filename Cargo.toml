@@ -1,0 +1,15 @@
+[package]
+name = "temperature"
+version = "0.1.0"
+authors = ["Anthony Bocci <boccianthony@yahoo.fr>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "lib_temperature"
+path = "src/lib.rs"
+
+[[bin]]
+name = "temperature"
+path = "src/main.rs"
