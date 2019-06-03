@@ -1,3 +1,18 @@
+//Copyright 2019 Anthony Bocci
+//This file is part of Temperature.
+// Temperature is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// any later version.
+
+// Temperature is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with Temperature.  If not, see <https://www.gnu.org/licenses/>.
+
 /*!
  * Module temperature_unit.
  * 
@@ -14,6 +29,7 @@ pub enum Temperature {
 }
 
 use Temperature::*;
+use std::fmt;
 
 impl Temperature {
     /// Is the temperature in Celsius?
@@ -51,5 +67,20 @@ impl Temperature {
             Celsius(c) => Celsius(*c),
             Fahrenheit(f) => Celsius((f - 32f32) / 1.8)
         }
+    }
+}
+
+impl fmt::Display for Temperature {
+    /**
+     * Displays a Tempereature.
+     * 
+     * It has the form "42 °C" ou "107.6 °F"
+     */
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let value = match &self {
+            Celsius(c) => format!("{} °C", c),
+            Fahrenheit(f) => format!("{} °F", f)
+        };
+        write!(f, "{}", value)
     }
 }
