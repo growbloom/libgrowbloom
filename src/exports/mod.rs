@@ -13,5 +13,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Temperature.  If not, see <https://www.gnu.org/licenses/>.
 
-pub mod models;
-pub mod exports;
+pub use self::exporter::Exporter;
+pub use self::stdout::Stdout;
+
+mod exporter;
+mod stdout;

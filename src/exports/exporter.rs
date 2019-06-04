@@ -13,5 +13,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Temperature.  If not, see <https://www.gnu.org/licenses/>.
 
-pub mod models;
-pub mod exports;
+/**
+ * A trait that every exporter has to implement.
+ */
+pub trait Exporter {
+    fn export(&self);
+}
