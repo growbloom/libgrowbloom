@@ -14,15 +14,28 @@
 // along with Temperature.  If not, see <https://www.gnu.org/licenses/>.
 
 /*!
- * Module exporter.
+ * Module exported_data.
  *
- * Here is defined the Exporter trait.
+ * Here are defined the ExportedData structure and its methods.
  */
 
-use crate::models::ExportedData;
+use super::Temperature;
 
+/**
+ * Represents a data that will be exported.
+ *
+ * It aims to standardize the format of exported datas whatever the
+ * exporter is.
+ */
+#[derive(Debug)]
+pub struct ExportedData {
+    ///The temperature we are exporting.
+    temperature: Temperature,
+}
 
-///A trait that every exporter has to implement.
-pub trait Exporter {
-    fn export(&self, data: &ExportedData);
+impl ExportedData {
+    /// Get a new ExportedData.
+    pub fn new(temperature: Temperature) -> Self {
+        ExportedData{ temperature }
+    }
 }

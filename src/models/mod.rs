@@ -13,6 +13,14 @@
 // You should have received a copy of the GNU General Public License
 // along with Temperature.  If not, see <https://www.gnu.org/licenses/>.
 
+/*!
+ * Module models.
+ *
+ * Here are defined the things about data representation and logic.
+ */
+
 pub use self::temperature_unit::Temperature;
+pub use self::exported_data::ExportedData;
 
 mod temperature_unit;
+mod exported_data;
