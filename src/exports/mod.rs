@@ -13,6 +13,13 @@
 // You should have received a copy of the GNU General Public License
 // along with Temperature.  If not, see <https://www.gnu.org/licenses/>.
 
+/*!
+ * Module exports.
+ *
+ * Here are defined things about the data
+ * exportation (stdout, file, http, database, ...)
+ */
+
 pub use self::exporter::Exporter;
 pub use self::stdout::Stdout;
 
