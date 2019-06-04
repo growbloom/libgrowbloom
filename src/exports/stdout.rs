@@ -42,6 +42,6 @@ impl Stdout {
 impl Exporter for Stdout {
     /// Export the data to Stdout.
     fn export(&self, data: &ExportedData) {
-        println!("{:?}", data);
+        println!("{}", data.temperature);
     }
 }
