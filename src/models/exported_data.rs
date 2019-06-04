@@ -30,7 +30,7 @@ use super::Temperature;
 #[derive(Debug)]
 pub struct ExportedData {
     ///The temperature we are exporting.
-    temperature: Temperature,
+    pub temperature: Temperature,
 }
 
 impl ExportedData {
