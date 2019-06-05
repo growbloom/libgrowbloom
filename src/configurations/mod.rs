@@ -14,10 +14,12 @@
 // along with Temperature.  If not, see <https://www.gnu.org/licenses/>.
 
 /*!
- * The Temperature's library.
+ * The module configurations.
+ *
+ * Here are defined the things related to configuration
+ * reading and management.
  */
 
-pub mod configurations;
-pub mod exports;
-pub mod managers;
-pub mod models;
+pub use self::configuration_reader::ConfigurationReader;
+
+mod configuration_reader;
