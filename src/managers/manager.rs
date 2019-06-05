@@ -14,9 +14,17 @@
 // along with Temperature.  If not, see <https://www.gnu.org/licenses/>.
 
 /*!
- * The Temperature's library.
+ * Module manager.
+ *
+ * Here is defined the Manager trait.
  */
 
-pub mod models;
-pub mod exports;
-pub mod managers;
+pub trait Manager {
+    /**
+     * Run the manager.
+     *
+     * That's where the main of the application works, where the
+     * readers and exporters should be used.
+     */
+    fn run();
+}

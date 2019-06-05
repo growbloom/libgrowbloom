@@ -14,9 +14,13 @@
 // along with Temperature.  If not, see <https://www.gnu.org/licenses/>.
 
 /*!
- * The Temperature's library.
+ * Module managers.
+ *
+ * Here are defined the things related to the managers.
  */
 
-pub mod models;
-pub mod exports;
-pub mod managers;
+pub use self::regular_interval::RegularInterval;
+pub use self::manager::Manager;
+
+mod manager;
+mod regular_interval;
