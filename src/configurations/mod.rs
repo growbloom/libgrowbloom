@@ -21,5 +21,7 @@
  */
 
 pub use self::configuration_reader::ConfigurationReader;
+pub use self::dot_env::DotEnv;
 
 mod configuration_reader;
+mod dot_env;

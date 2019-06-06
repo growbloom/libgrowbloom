@@ -36,5 +36,5 @@ pub trait ConfigurationReader {
      * Because we can try to read an undefined value, the method returns
      * an Option.
      */
-    fn get_value<T>(key: &str) -> Option<T>;
+    fn get_value<T: From<String>>(key: &str) -> Option<T>;
 }
