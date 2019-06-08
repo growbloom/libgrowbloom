@@ -21,6 +21,7 @@
 
 use crate::models::ExportedData;
 use super::Exporter;
+use std::fmt::Display;
 
 /**
  * An exporter to the stdout.
@@ -39,9 +40,9 @@ impl Stdout {
 }
 
 
-impl Exporter for Stdout {
+impl<T: Display> Exporter<T> for Stdout {
     /// Export the data to Stdout.
-    fn export(&self, data: &ExportedData) {
-        println!("{}", data.temperature);
+    fn export(&self, data: &ExportedData<T>) {
+        println!("{}", data.data);
     }
 }

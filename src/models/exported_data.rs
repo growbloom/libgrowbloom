@@ -19,7 +19,6 @@
  * Here are defined the ExportedData structure and its methods.
  */
 
-use super::Temperature;
 
 /**
  * Represents a data that will be exported.
@@ -28,14 +27,13 @@ use super::Temperature;
  * exporter is.
  */
 #[derive(Debug)]
-pub struct ExportedData {
-    ///The temperature we are exporting.
-    pub temperature: Temperature,
+pub struct ExportedData<T> {
+    pub data: T,
 }
 
-impl ExportedData {
+impl<T> ExportedData<T> {
     /// Get a new ExportedData.
-    pub fn new(temperature: Temperature) -> Self {
-        ExportedData{ temperature }
+    pub fn new(data: T) -> Self {
+        ExportedData{ data }
     }
 }

@@ -1,16 +1,8 @@
 [package]
-name = "temperature"
+name = "libgrowbloom"
 version = "0.1.0"
 authors = ["Anthony Bocci <boccianthony@yahoo.fr>"]
 edition = "2018"
 
 [dependencies]
 dotenv = "0.14.1"
-
-[lib]
-name = "lib_temperature"
-path = "src/lib.rs"
-
-[[bin]]
-name = "temperature"
-path = "src/main.rs"

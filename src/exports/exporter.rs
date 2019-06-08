@@ -23,6 +23,6 @@ use crate::models::ExportedData;
 
 
 ///A trait that every exporter has to implement.
-pub trait Exporter {
-    fn export(&self, data: &ExportedData);
+pub trait Exporter<T> {
+    fn export(&self, data: &ExportedData<T>);
 }

@@ -1,6 +1,6 @@
-# GrowBloom's temperature
+# LibGrowBloom
 
-Temperature is a GrowBloom tool to monitor the temperature. It is part of the
+LibGrowBloom is the GrowBloom's root project, it is used in the
 GrowBloom suite.
 
 ## What is GrowBloom?
@@ -15,16 +15,10 @@ to manage them. What if using a web portal you could set some triggers like
 Well, as of writing these lines it is only a dream. But who knows, some day
 when you'll read these lines it might be real.
 
-## What is Temperature?
+## What is LibGrowBloom?
 
-Temperature is a monitoring daemon written in [Rust][rust].
-Its work is to communicate with the temperature sensor and report the datas.
-The datas could be reported into a database, sent via HTTPS or even written
-into a file.
-
-In our dream of triggers, a web portal could call a trigger when Temperature
-reports a value.
-
+LibGrowBloom is a library written in [Rust][rust] that provides several
+tools that will be used in most GrowBloom's projects.
 
 
 
