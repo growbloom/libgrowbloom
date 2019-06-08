@@ -17,6 +17,7 @@
  * Here are defined the ConfigurationReader trait and its methods.
  */
 
+
 ///This trait has to be implemented by every configuration reader.
 pub trait ConfigurationReader {
 
@@ -26,7 +27,7 @@ pub trait ConfigurationReader {
      * The variables required by the managers are read here and
      * should be available then using this same configuration reader.
      */
-    fn read_configuration();
+    fn read_configuration(&mut self);
 
     /**
      * Get a configuration value by its key.
@@ -36,5 +37,5 @@ pub trait ConfigurationReader {
      * Because we can try to read an undefined value, the method returns
      * an Option.
      */
-    fn get_value<T: From<String>>(key: &str) -> Option<T>;
+    fn get_value(&self, key: &str) -> Option<&String>;
 }

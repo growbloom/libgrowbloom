@@ -21,7 +21,6 @@ extern crate dotenv;
 
 use dotenv::dotenv;
 use std::collections::HashMap;
-use std::convert::{TryFrom, TryInto};
 use std::env;
 use super::ConfigurationReader;
 
@@ -31,14 +30,22 @@ pub struct DotEnv {
     pub values: HashMap<String, String>,
 }
 
+impl DotEnv {
+    pub fn new() -> Self {
+        DotEnv { values: HashMap::new() }
+    }
+}
+
 impl ConfigurationReader for DotEnv {
     /**
      * Read the configuration of the .env and set the values in
      * the `values` attribute.
      */
-    fn read_configuration() {
+    fn read_configuration(&mut self) {
         dotenv().ok();
-        //TODO: set the `values` attribute.
+        for (key, value) in env::vars() {
+            self.values.insert(key, value);
+        }
     }
 
     /**
@@ -46,20 +53,10 @@ impl ConfigurationReader for DotEnv {
      * If the return type cannot be created from string
      * None is returned.
      */
-    fn get_value<T: TryFrom<String>>(key: &str) -> Option<T> {
-        // Get the last env var with the given name.
-        // We get a tuple, 0 is key and 1 is value.
-        let key_value: Option<(String, String)> = env::vars()
-        .filter(|item| item.0 == key)
-        .last();
-        match key_value {
-            Some(tuple) => {
-                match tuple.1.try_into() {
-                    Ok(v) => Some(v),
-                    Err(_) => None,
-                }
-            },
-            None    => None
+    fn get_value(&self, key: &str) -> Option<&String> {
+        match self.values.get(key) {
+            Some(v) => Some(v),
+            None => None
         }
     }
 }
