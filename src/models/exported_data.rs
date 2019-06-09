@@ -29,11 +29,13 @@
 #[derive(Debug)]
 pub struct ExportedData<T> {
     pub data: T,
+    pub exported_at: u64,
+    pub measured_at: u64,
 }
 
 impl<T> ExportedData<T> {
     /// Get a new ExportedData.
-    pub fn new(data: T) -> Self {
-        ExportedData{ data }
+    pub fn new(data: T, measured_at: u64) -> Self {
+        ExportedData{ data, measured_at, exported_at: 0 }
     }
 }
