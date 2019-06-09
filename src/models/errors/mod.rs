@@ -14,21 +14,11 @@
 // along with Temperature.  If not, see <https://www.gnu.org/licenses/>.
 
 /*!
- * Module reader.
+ * Module errors.
  *
- * Here is defined the Reader trait.
+ * Here are defined the errors that can be managed in the program.
  */
 
-use crate::models::ExportedData;
-use crate::models::errors::ReadError;
+pub use self::read_error::ReadError;
 
-/**
- * A trait used to read a data.
- *
- * This data will be exported.
- * Every sensor has to implement it.
- */
-pub trait Reader<T> {
-    /// Read a data.
-    fn read(&self) -> Result<ExportedData<T>, ReadError>;
-}
+mod read_error;

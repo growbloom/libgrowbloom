@@ -14,21 +14,12 @@
 // along with Temperature.  If not, see <https://www.gnu.org/licenses/>.
 
 /*!
- * Module reader.
+ * Module read_error.
  *
- * Here is defined the Reader trait.
+ * Here are defined the ReadError enum and its methods.
  */
 
-use crate::models::ExportedData;
-use crate::models::errors::ReadError;
+///Represents an error during reading a temperature.
+pub enum ReadError {
 
-/**
- * A trait used to read a data.
- *
- * This data will be exported.
- * Every sensor has to implement it.
- */
-pub trait Reader<T> {
-    /// Read a data.
-    fn read(&self) -> Result<ExportedData<T>, ReadError>;
 }
