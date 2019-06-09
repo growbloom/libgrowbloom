@@ -55,14 +55,12 @@ impl ConfigurationReader for DotEnv {
      * None is returned.
      */
     fn get_value<T: TryFrom<String>>(&self, key: &str) -> Option<T> {
-        match self.values.get(key) {
-            Some(v) => {
-                match v.clone().try_into() {
-                    Ok(r) => Some(r),
-                    Err(_) => None,
-                }
-            },
-            None => None
+        if let Some(value) = self.values.get(key) {
+            match value.clone().try_into() {
+                Ok(result) => return Some(result),
+                Err(_) => return None,
+            }
         }
+        None
     }
 }
