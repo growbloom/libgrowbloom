@@ -21,6 +21,7 @@ extern crate dotenv;
 
 use dotenv::dotenv;
 use std::collections::HashMap;
+use std::convert::{TryFrom, TryInto};
 use std::env;
 use super::ConfigurationReader;
 
@@ -53,9 +54,14 @@ impl ConfigurationReader for DotEnv {
      * If the return type cannot be created from string
      * None is returned.
      */
-    fn get_value(&self, key: &str) -> Option<&String> {
+    fn get_value<T: TryFrom<String>>(&self, key: &str) -> Option<T> {
         match self.values.get(key) {
-            Some(v) => Some(v),
+            Some(v) => {
+                match v.clone().try_into() {
+                    Ok(r) => Some(r),
+                    Err(_) => None,
+                }
+            },
             None => None
         }
     }
