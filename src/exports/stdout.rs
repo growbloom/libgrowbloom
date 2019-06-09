@@ -19,9 +19,8 @@
  * Here are defined the structure Stdout and its methods.
  */
 
-use crate::models::ExportedData;
+use crate::models::{Converter, ExportedData };
 use super::Exporter;
-use std::fmt::Display;
 
 /**
  * An exporter to the stdout.
@@ -39,10 +38,11 @@ impl Stdout {
     }
 }
 
-
-impl<T: Display> Exporter<T> for Stdout {
+/// Stdout writes text so it needs the data is convertable to String.
+impl<T> Exporter<T, String> for Stdout
+where T: Converter<String> {
     /// Export the data to Stdout.
     fn export(&self, data: &ExportedData<T>) {
-        println!("{}", data.data);
+        println!("{}", data.data.convert());
     }
 }

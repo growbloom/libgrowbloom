@@ -19,10 +19,12 @@
  * Here is defined the Exporter trait.
  */
 
-use crate::models::ExportedData;
-
+use crate::models::{Converter, ExportedData };
 
 ///A trait that every exporter has to implement.
-pub trait Exporter<T> {
+/// It aims to export a data to any destination
+/// (database, file, webservice, ...)
+pub trait Exporter<T, U>
+where T: Converter<U> {
     fn export(&self, data: &ExportedData<T>);
 }
