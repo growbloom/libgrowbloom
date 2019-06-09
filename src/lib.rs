@@ -21,3 +21,4 @@ pub mod configurations;
 pub mod exports;
 pub mod managers;
 pub mod models;
+pub mod sensors;

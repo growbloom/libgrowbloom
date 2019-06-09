@@ -19,6 +19,9 @@
  * Here are defined the things about data representation and logic.
  */
 
+pub use self::converter::Converter;
 pub use self::exported_data::ExportedData;
 
+mod converter;
 mod exported_data;
+pub mod errors;
