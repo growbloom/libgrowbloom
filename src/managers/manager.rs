@@ -19,7 +19,9 @@
  * Here is defined the Manager trait.
  */
 
-pub trait Manager {
+use crate::configurations::ConfigurationReader;
+
+pub trait Manager<T: ConfigurationReader> {
     /**
      * Run the manager.
      *
@@ -27,4 +29,13 @@ pub trait Manager {
      * readers and exporters should be used.
      */
     fn run();
+
+    /**
+     * Set the configuration reader.
+     *
+     * It's up to each manager to choose what this method should do.
+     * It might store it in a field, or in database, there is no
+     * requirement on that part.
+     */
+    fn set_config(&mut self, config: T);
 }

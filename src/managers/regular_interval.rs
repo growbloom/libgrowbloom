@@ -19,6 +19,7 @@
  * Here are defined the RegularInterval structure and its methods.
  */
 
+use crate::configurations::ConfigurationReader;
 use super::Manager;
 
 /**
@@ -27,13 +28,14 @@ use super::Manager;
  * It's useful when you want to read / export the temperature
  * every 30 seconds for example.
  */
-pub struct RegularInterval {
+pub struct RegularInterval<T: ConfigurationReader> {
     /// The time interval between two runs, in seconds.
     pub interval: u32,
+    config: T
 }
 
-impl Manager for RegularInterval {
-    // Read and export the temperature every `interval` seconds.
+impl<T: ConfigurationReader> Manager<T> for RegularInterval<T> {
+    /// Read and export the temperature every `interval` seconds.
     fn run() {
         //TODO: Read the configuration
         //      Instantiate the reader
@@ -42,5 +44,10 @@ impl Manager for RegularInterval {
         //      Export the temperature
         //      Wait `interval` seconds
         //      Repeat
+    }
+
+    /// Set the configuration reader in the `config` attribute.
+    fn set_config(&mut self, config: T) {
+        self.config = config;
     }
 }
